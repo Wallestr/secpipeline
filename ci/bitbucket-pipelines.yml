@@ -1,0 +1,13 @@
+# пример под Bitbucket Pipelines (логика та же, что в GitHub Actions)
+image: python:3.12
+
+pipelines:
+  default:
+    - step:
+        name: Security scan
+        script:
+          - pip install -r requirements.txt
+          - pip install -e .
+          - python -m secpipeline scan . --out .reports --fail-on high --skip-deps
+        artifacts:
+          - .reports/**

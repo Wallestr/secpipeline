@@ -1,0 +1,3 @@
+# pinned old-ish package name format for parser demos;
+# OSV may or may not return vulns depending on advisory data
+requests==2.19.0

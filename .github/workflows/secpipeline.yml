@@ -1,0 +1,31 @@
+name: secpipeline
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  security-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install -e .
+
+      - name: Scan repo
+        run: |
+          python -m secpipeline scan . --out .reports --fail-on critical --skip-deps
+
+      - name: Upload report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: secpipeline-report
+          path: .reports/
