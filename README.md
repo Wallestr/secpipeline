@@ -32,10 +32,11 @@ python -m secpipeline serve
 
 ## CI
 
-- GitHub Actions: `.github/workflows/secpipeline.yml`
-- Bitbucket example: `ci/bitbucket-pipelines.yml`
+Примеры лежат в `ci/`:
+- `ci/github-actions.yml` — скопируй в `.github/workflows/` у себя
+- `ci/bitbucket-pipelines.yml` — Bitbucket
 
-Идея одна и та же: прогнал скан → сохранил report → при необходимости упал job.
+Идея одна: прогнал скан → сохранил report → при необходимости упал job.
 
 ## Layout
 
